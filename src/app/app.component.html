@@ -7,16 +7,23 @@
         <li class="nav-item">
           <a class="nav-link text-glows" routerLink="catalog">Catalog</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-glows" routerLink="dashboard">Dashboard</a>
+        </li>
       </ul>
       <ul class="navbar-nav justify-content-end">
         <li class="nav-item">
           <a class="nav-link text-glows" routerLink="login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-glows" (click)="logout()">LogOut</a>
         </li>
       </ul>
     </div>
   </nav>
 </div>
 <router-outlet></router-outlet>
+<ng-toast></ng-toast>
 <footer class="flex-shrink-0 py-4 bg-custom text-white-50">
   <div class="container text-center">
     <small>QManga</small><br/>

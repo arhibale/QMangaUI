@@ -9,6 +9,9 @@ import {NgOptimizedImage} from "@angular/common";
 import {HomeComponent} from './components/home/home.component';
 import {CatalogComponent} from './components/catalog/catalog.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {NgToastModule} from "ng-angular-popup";
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +19,16 @@ import {ReactiveFormsModule} from "@angular/forms";
     RegistrationComponent,
     LoginComponent,
     HomeComponent,
-    CatalogComponent
+    CatalogComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgOptimizedImage,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

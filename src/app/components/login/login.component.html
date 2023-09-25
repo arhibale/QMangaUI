@@ -30,7 +30,7 @@
               <div class="form-inline fr mt-4">
                 <a class="font-weight-bold forget">Forget Password?</a>
               </div>
-              <button (click)="onSubmit()" [disabled]="loginForm.invalid" type="submit" class="btn btn-dark btn-block mt-4 w-100">Login</button>
+              <button (click)="onLogin()" [disabled]="loginForm.invalid" type="submit" class="btn btn-dark btn-block mt-4 w-100">Login</button>
               <div class="text-center pt-4 text-muted">Don't have account? <a class="forget" routerLink="/registration">Registration</a></div>
             </form>
           </div>

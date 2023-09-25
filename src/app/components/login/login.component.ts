@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import ValidateForm from "../../helpers/validate-form";
+import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
+import {NgToastService} from "ng-angular-popup";
 
 @Component({
   selector: 'app-login',
@@ -14,8 +17,12 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
+    private router: Router,
+    private toast: NgToastService,
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -30,11 +37,23 @@ export class LoginComponent implements OnInit {
     this.isText ? this.type = "text" : this.type = "password";
   }
 
-  onSubmit() {
+  onLogin() {
     if (this.loginForm.valid) {
-      // send to api
+      this.auth.login(this.loginForm.value)
+        .subscribe({
+          next: (res) => {
+            this.auth.storeToken(res.token);
+            this.loginForm.reset();
+            this.router.navigate(['']);
+
+            this.toast.success({detail:"SUCCESS", summary: res.message, duration: 5000})
+          },
+          error: (err) => {
+            this.toast.error({detail:"ERROR", summary: "Something when wrong!", duration: 5000})
+            console.log(err);
+          }
+        })
     } else {
-      // throw error
       ValidateForm.validateAllFormFields(this.loginForm);
     }
   }
