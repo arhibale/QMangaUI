@@ -48,8 +48,8 @@ export class RegistrationComponent implements OnInit {
             this.toast.success({detail:"SUCCESS", summary: res.message, duration: 5000})
           },
           error: (err) => {
-            this.toast.error({detail:"ERROR", summary: err?.error.message, duration: 5000})
-            console.log(err?.error.message);
+            this.toast.error({detail:"ERROR", summary: err?.message, duration: 5000})
+            console.log(err?.message);
           }
         })
     } else {

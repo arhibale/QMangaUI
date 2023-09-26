@@ -6,13 +6,16 @@ import {HomeComponent} from "./components/home/home.component";
 import {CatalogComponent} from "./components/catalog/catalog.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {authGuard} from "./guards/auth.guard";
+import {creatorGuard} from "./guards/creator.guard";
+import {ProfileComponent} from "./components/profile/profile.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'catalog', component: CatalogComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [authGuard]}
+  {path: 'dashboard', component: DashboardComponent, canActivate: [creatorGuard]},
+  {path: 'profile', component: ProfileComponent, canActivate: [authGuard]}
 ];
 
 @NgModule({

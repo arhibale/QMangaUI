@@ -7,16 +7,22 @@
         <li class="nav-item">
           <a class="nav-link text-glows" routerLink="catalog">Catalog</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="role === 'Creator' && isAuth()" class="nav-item">
           <a class="nav-link text-glows" routerLink="dashboard">Dashboard</a>
         </li>
       </ul>
       <ul class="navbar-nav justify-content-end">
-        <li class="nav-item">
+        <li *ngIf="!isAuth()" class="nav-item">
           <a class="nav-link text-glows" routerLink="login">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-glows" (click)="logout()">LogOut</a>
+        <li *ngIf="!isAuth()" class="nav-item">
+          <a class="nav-link text-glows" routerLink="registration">Registration</a>
+        </li>
+        <li *ngIf="isAuth()" class="nav-item">
+          <a class="nav-link text-glows" routerLink="profile">{{username}}</a>
+        </li>
+        <li *ngIf="isAuth()" class="nav-item">
+          <a class="nav-link text-glows" (click)="logout()" style="cursor: pointer">LogOut</a>
         </li>
       </ul>
     </div>

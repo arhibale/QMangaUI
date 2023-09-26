@@ -4,6 +4,7 @@ import ValidateForm from "../../helpers/validate-form";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {NgToastService} from "ng-angular-popup";
+import {UserStoreService} from "../../services/user-store.service";
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
     private auth: AuthService,
     private router: Router,
     private toast: NgToastService,
+    private userStore: UserStoreService
   ) { }
 
   ngOnInit(): void {
@@ -42,14 +44,21 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.loginForm.value)
         .subscribe({
           next: (res) => {
-            this.auth.storeToken(res.token);
+            console.log(res);
+            this.auth.storeToken(res.accessToken);
+            this.auth.storeRefreshToken(res.refreshToken)
+            const tokenPayload = this.auth.decodedToken();
+
+            this.userStore.setUsernameForStore(tokenPayload.unique_name);
+            this.userStore.setRoleForStore(tokenPayload.role);
+
             this.loginForm.reset();
             this.router.navigate(['']);
 
             this.toast.success({detail:"SUCCESS", summary: res.message, duration: 5000})
           },
           error: (err) => {
-            this.toast.error({detail:"ERROR", summary: "Something when wrong!", duration: 5000})
+            this.toast.error({detail:"ERROR", summary:err.message, sticky: true, duration: 5000})
             console.log(err);
           }
         })
