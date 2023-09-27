@@ -8,6 +8,7 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {authGuard} from "./guards/auth.guard";
 import {creatorGuard} from "./guards/creator.guard";
 import {ProfileComponent} from "./components/profile/profile.component";
+import {ResetComponent} from "./components/reset/reset.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [creatorGuard]},
-  {path: 'profile', component: ProfileComponent, canActivate: [authGuard]}
+  {path: 'profile', component: ProfileComponent, canActivate: [authGuard]},
+  {path: 'reset', component: ResetComponent}
 ];
 
 @NgModule({

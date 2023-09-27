@@ -8,12 +8,13 @@ import {LoginComponent} from './components/login/login.component';
 import {NgOptimizedImage} from "@angular/common";
 import {HomeComponent} from './components/home/home.component';
 import {CatalogComponent} from './components/catalog/catalog.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {NgToastModule} from "ng-angular-popup";
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import {TokenInterceptor} from "./interceptors/token.interceptor";
+import { ResetComponent } from './components/reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -23,16 +24,18 @@ import {TokenInterceptor} from "./interceptors/token.interceptor";
     HomeComponent,
     CatalogComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    ResetComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgOptimizedImage,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgToastModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgOptimizedImage,
+        ReactiveFormsModule,
+        HttpClientModule,
+        NgToastModule,
+        FormsModule
+    ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

@@ -5,6 +5,7 @@ import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {NgToastService} from "ng-angular-popup";
 import {UserStoreService} from "../../services/user-store.service";
+import {ResetPasswordService} from "../../services/reset-password.service";
 
 @Component({
   selector: 'app-login',
@@ -18,13 +19,18 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
 
+  public resetPasswordEmail!: string;
+  public isValidEmail!: boolean;
+
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
     private router: Router,
     private toast: NgToastService,
-    private userStore: UserStoreService
-  ) { }
+    private userStore: UserStoreService,
+    private resetService: ResetPasswordService
+  ) {
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -55,15 +61,43 @@ export class LoginComponent implements OnInit {
             this.loginForm.reset();
             this.router.navigate(['']);
 
-            this.toast.success({detail:"SUCCESS", summary: res.message, duration: 5000})
+            this.toast.success({detail: "SUCCESS", summary: res.message, duration: 5000})
           },
           error: (err) => {
-            this.toast.error({detail:"ERROR", summary:err.message, sticky: true, duration: 5000})
+            this.toast.error({detail: "ERROR", summary: err.message, sticky: true, duration: 5000})
             console.log(err);
           }
         })
     } else {
       ValidateForm.validateAllFormFields(this.loginForm);
+    }
+  }
+
+  checkValidEmail(event: string) {
+    const value = event;
+    const pattern = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+    this.isValidEmail = pattern.test(value);
+    return this.isValidEmail;
+  }
+
+  confirmToSend() {
+    if (this.checkValidEmail(this.resetPasswordEmail)) {
+      console.log(this.resetPasswordEmail);
+
+      this.resetService.sendResetPasswordLink(this.resetPasswordEmail)
+        .subscribe({
+          next: (res) => {
+            this.toast.success({detail: 'SUCCESS', summary: res.message, duration: 5000});
+
+            this.resetPasswordEmail = "";
+            const buttonRef = document.getElementById("closeModalBtn");
+            buttonRef?.click();
+          },
+          error: (err) => {
+            this.toast.error({detail: 'ERROR', summary: err.message, duration: 5000});
+          }
+
+        });
     }
   }
 }
