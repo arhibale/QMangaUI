@@ -1,0 +1,66 @@
+<section class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center mb-5">
+        <h1 class="display-4 font-weight-bolder text-white text-glow">Catalog</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div *ngFor="let item of books | paginate: { itemsPerPage: 10, currentPage: pageNumber, totalItems: count }"
+         class="col-sm-12 col-md-2 col-lg-3 mb-4">
+        <a href="#" class="card shadow-lg text-white card-text-bg card-has-bg click-col"
+             style="background-image:url('https://gtwallpaper.org/sites/default/files/wallpaper/195839/cyberpunk-girl-iphone-wallpapers-195839-1045329-2972719.png');">
+          <div class="card-img-overlay card-text d-flex flex-column text-glow">
+            <div class="card-body">
+              <small class="card-title mt-0 ">{{item.name}}</small>
+            </div>
+            <div class="card-footer">
+              <div class="media">
+                <div class="media-body">
+                  <small>Lorem ipsum dolor.</small>
+                  <ul class="tag-box">
+                    <li class="tag-item"><i class="fa fa-tag mr-2"></i>Tag</li>
+                    <li class="tag-item"><i class="fa fa-tag mr-2"></i>Tag</li>
+                    <li class="tag-item"><i class="fa fa-tag mr-2"></i>Tag</li>
+                    <li class="tag-item"><i class="fa fa-tag mr-2"></i>Tag</li>
+                    <li class="tag-item"><i class="fa fa-tag mr-2"></i>Tag</li>
+                    <li class="tag-item"><i class="fa fa-tag mr-2"></i>Tag</li>
+                    <li class="tag-item"><i class="fa fa-tag mr-2"></i>Tag</li>
+                    <li class="tag-item"><i class="fa fa-tag mr-2"></i>Tag</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+  <pagination-template #p="paginationApi" (pageChange)="onPageChange($event)">
+    <div class="container-pg">
+      <ul class="pagination">
+        <li [class.disabled]="p.isFirstPage()">
+          <a *ngIf="!p.isFirstPage()" (click)="p.previous()">Prev</a>
+        </li>
+        <li>
+          <a *ngIf="p.isFirstPage()">Prev</a>
+        </li>
+        <li *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+          <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+            <span>{{ page.label }}</span>
+          </a>
+          <a class="pagination-bg" *ngIf="p.getCurrent() === page.value">
+            <span>{{ page.label }}</span>
+          </a>
+        </li>
+        <li [class.disabled]="p.isLastPage()">
+          <a *ngIf="!p.isLastPage()" (click)="p.next()">Next</a>
+        </li>
+        <li>
+          <a *ngIf="p.isLastPage()">Next</a>
+        </li>
+      </ul>
+    </div>
+  </pagination-template>
+</section>

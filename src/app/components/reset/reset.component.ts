@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ResetPassword} from "../../models/reset-password.model";
+import {ResetPasswordModel} from "../../models/reset-password.model";
 import {ConfirmPasswordValidator} from "../../helpers/confirm-password";
 import {ActivatedRoute, Router} from "@angular/router";
 import ValidateForm from "../../helpers/validate-form";
@@ -20,7 +20,7 @@ export class ResetComponent implements OnInit {
   resetForm!: FormGroup;
   emailToReset!: string;
   emailToken!: string;
-  resetPassword = new ResetPassword();
+  resetPassword = new ResetPasswordModel();
 
   constructor(
     private formBuilder: FormBuilder,

@@ -7,7 +7,6 @@ import {RegistrationComponent} from './components/registration/registration.comp
 import {LoginComponent} from './components/login/login.component';
 import {NgOptimizedImage} from "@angular/common";
 import {HomeComponent} from './components/home/home.component';
-import {CatalogComponent} from './components/catalog/catalog.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {NgToastModule} from "ng-angular-popup";
@@ -15,6 +14,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import {TokenInterceptor} from "./interceptors/token.interceptor";
 import { ResetComponent } from './components/reset/reset.component';
+import { TagComponent } from './components/tag/tag.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -22,20 +23,21 @@ import { ResetComponent } from './components/reset/reset.component';
     RegistrationComponent,
     LoginComponent,
     HomeComponent,
-    CatalogComponent,
     DashboardComponent,
     ProfileComponent,
-    ResetComponent
+    ResetComponent,
+    TagComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        NgOptimizedImage,
-        ReactiveFormsModule,
-        HttpClientModule,
-        NgToastModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgOptimizedImage,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgToastModule,
+    FormsModule,
+    NgxPaginationModule
+  ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

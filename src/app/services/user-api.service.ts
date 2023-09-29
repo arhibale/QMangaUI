@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class UserApiService {
   private baseUrl = "https://localhost:7087/api/v1/user/";
   constructor(private http: HttpClient) { }
 

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ResetPassword} from "../models/reset-password.model";
+import {ResetPasswordModel} from "../models/reset-password.model";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class ResetPasswordService {
     return this.http.post<any>(`${this.baseUrl}send-email-reset-password/${email}`, {});
   }
 
-  resetPassword(resetPassword: ResetPassword) {
+  resetPassword(resetPassword: ResetPasswordModel) {
     return this.http.post<any>(`${this.baseUrl}reset-password`, resetPassword);
   }
 }

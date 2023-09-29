@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiService} from "../../services/api.service";
+import {UserApiService} from "../../services/user-api.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +9,7 @@ import {ApiService} from "../../services/api.service";
 export class DashboardComponent implements OnInit {
   public users: any = [];
 
-  constructor(private api: ApiService) {
+  constructor(private api: UserApiService) {
   }
 
   ngOnInit(): void {

@@ -32,7 +32,7 @@ export class TokenInterceptor implements HttpInterceptor {
             return this.handleAUnAuthorizedError(request, next);
           }
         }
-        return throwError(() => new Error(err.error.message))
+        return throwError(() => new Error(err.message))
       })
     );
   }

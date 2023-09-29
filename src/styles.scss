@@ -1,11 +1,15 @@
 @import "assets/scss/common.scss";
 
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .bg-custom {
   background: rgb(54,0,82);
   background: linear-gradient(90deg, rgb(54,0,82,1) 20%, rgb(58,0,145,1) 100%);
 }
 
-.text-glows {
+.text-glow {
   font-weight: bold;
   transition: all 0.25s ease;
 
