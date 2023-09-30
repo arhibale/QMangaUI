@@ -9,7 +9,7 @@ import {TokenApiModel} from "../models/token-api.model";
 })
 export class AuthService {
   private baseUrl = "https://localhost:7087/api/v1/user/";
-  private userPayload: any;
+  private readonly userPayload: any;
 
   constructor(private http: HttpClient, private router: Router) {
     this.userPayload = this.decodedToken();
@@ -25,7 +25,7 @@ export class AuthService {
 
   logout() {
     localStorage.clear();
-    this.router.navigate([''])
+    this.router.navigate(['']);
   }
 
   storeToken(tokenValue: string) {
@@ -68,6 +68,6 @@ export class AuthService {
   }
 
   renewToken(tokenApi: TokenApiModel) {
-    return this.http.post<any>(`${this.baseUrl}refresh`, tokenApi)
+    return this.http.post<any>(`${this.baseUrl}refresh`, tokenApi);
   }
 }

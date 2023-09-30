@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
           next: (res) => {
             console.log(res);
             this.auth.storeToken(res.accessToken);
-            this.auth.storeRefreshToken(res.refreshToken)
+            this.auth.storeRefreshToken(res.refreshToken);
             const tokenPayload = this.auth.decodedToken();
 
             this.userStore.setUsernameForStore(tokenPayload.unique_name);
@@ -61,10 +61,10 @@ export class LoginComponent implements OnInit {
             this.loginForm.reset();
             this.router.navigate(['']);
 
-            this.toast.success({detail: "SUCCESS", summary: res.message, duration: 5000})
+            this.toast.success({detail: "SUCCESS", summary: res.message, duration: 5000});
           },
           error: (err) => {
-            this.toast.error({detail: "ERROR", summary: err.message, sticky: true, duration: 5000})
+            this.toast.error({detail: "ERROR", summary: err.message, sticky: true, duration: 5000});
             console.log(err);
           }
         })
@@ -96,7 +96,6 @@ export class LoginComponent implements OnInit {
           error: (err) => {
             this.toast.error({detail: 'ERROR', summary: err.message, duration: 5000});
           }
-
         });
     }
   }

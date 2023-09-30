@@ -11,21 +11,23 @@ export class AppComponent implements OnInit {
   username: string = "";
   role: string = "";
 
-  constructor(private auth: AuthService, private userStore: UserStoreService) {
-  }
+  constructor(
+    private auth: AuthService,
+    private userStore: UserStoreService
+  ) { }
 
   ngOnInit(): void {
     this.userStore.getUsernameFromStore()
       .subscribe(val => {
         const usernameFromToken = this.auth.getUsernameFromToken();
         this.username = val || usernameFromToken;
-      })
+      });
 
     this.userStore.getRoleFromStore()
       .subscribe(value => {
         const roleFromToken = this.auth.getRoleFromToken();
         this.role = value || roleFromToken;
-      })
+      });
   }
 
   logout() {

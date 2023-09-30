@@ -28,7 +28,8 @@ export class ResetComponent implements OnInit {
     private resetService: ResetPasswordService,
     private toast: NgToastService,
     private router: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.resetForm = this.formBuilder.group({
@@ -61,11 +62,11 @@ export class ResetComponent implements OnInit {
       this.resetService.resetPassword(this.resetPassword)
         .subscribe({
           next: (res) => {
-            this.toast.success({detail: 'SUCCESS', summary: res.message, duration: 5000})
-            this.router.navigate(['login'])
+            this.toast.success({detail: 'SUCCESS', summary: res.message, duration: 5000});
+            this.router.navigate(['login']);
           },
           error: (err) => {
-            this.toast.error({detail: 'ERROR', summary: err.message, duration: 5000})
+            this.toast.error({detail: 'ERROR', summary: err.message, duration: 5000});
           }
         });
     } else {

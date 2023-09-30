@@ -10,12 +10,13 @@ import {HomeComponent} from './components/home/home.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {NgToastModule} from "ng-angular-popup";
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {ProfileComponent} from './components/profile/profile.component';
 import {TokenInterceptor} from "./interceptors/token.interceptor";
-import { ResetComponent } from './components/reset/reset.component';
-import { TagComponent } from './components/tag/tag.component';
+import {ResetComponent} from './components/reset/reset.component';
+import {TagComponent} from './components/tag/tag.component';
 import {NgxPaginationModule} from "ngx-pagination";
+import {BookComponent} from './components/book/book.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {NgxPaginationModule} from "ngx-pagination";
     DashboardComponent,
     ProfileComponent,
     ResetComponent,
-    TagComponent
+    TagComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule,

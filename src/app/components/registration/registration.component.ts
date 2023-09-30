@@ -21,7 +21,8 @@ export class RegistrationComponent implements OnInit {
     private auth: AuthService,
     private router: Router,
     private toast: NgToastService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.regForm = this.formBuilder.group({
@@ -41,14 +42,14 @@ export class RegistrationComponent implements OnInit {
     if (this.regForm.valid) {
       this.auth.register(this.regForm.value)
         .subscribe({
-          next:(res) => {
+          next: (res) => {
             this.regForm.reset()
             this.router.navigate(['login'])
 
-            this.toast.success({detail:"SUCCESS", summary: res.message, duration: 5000})
+            this.toast.success({detail: "SUCCESS", summary: res.message, duration: 5000});
           },
           error: (err) => {
-            this.toast.error({detail:"ERROR", summary: err?.message, duration: 5000})
+            this.toast.error({detail: "ERROR", summary: err?.message, duration: 5000});
             console.log(err?.message);
           }
         })
