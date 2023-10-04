@@ -9,8 +9,4 @@ export class UserApiService {
 
   constructor(private http: HttpClient) {
   }
-
-  getUsers() {
-    return this.http.get<any>(this.baseUrl);
-  }
 }

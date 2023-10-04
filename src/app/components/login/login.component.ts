@@ -50,7 +50,6 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.loginForm.value)
         .subscribe({
           next: (res) => {
-            console.log(res);
             this.auth.storeToken(res.accessToken);
             this.auth.storeRefreshToken(res.refreshToken);
             const tokenPayload = this.auth.decodedToken();
@@ -64,8 +63,7 @@ export class LoginComponent implements OnInit {
             this.toast.success({detail: "SUCCESS", summary: res.message, duration: 5000});
           },
           error: (err) => {
-            this.toast.error({detail: "ERROR", summary: err.message, sticky: true, duration: 5000});
-            console.log(err);
+            this.toast.error({detail: "ERROR", summary: err, sticky: true, duration: 5000});
           }
         })
     } else {

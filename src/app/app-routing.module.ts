@@ -10,6 +10,7 @@ import {ProfileComponent} from "./components/profile/profile.component";
 import {ResetComponent} from "./components/reset/reset.component";
 import {TagComponent} from "./components/tag/tag.component";
 import {BookComponent} from "./components/book/book.component";
+import {ReaderComponent} from "./components/reader/reader.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent, canActivate: [authGuard]},
   {path: 'reset', component: ResetComponent},
   {path: 'tag', component: TagComponent},
-  {path: 'book', component: BookComponent}
+  {path: 'book', component: BookComponent},
+  {path: 'reader', component: ReaderComponent}
 ];
 
 @NgModule({
