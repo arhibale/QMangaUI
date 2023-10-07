@@ -29,7 +29,7 @@ export class TokenInterceptor implements HttpInterceptor {
       catchError((err: any) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
-            return this.handleAUnAuthorizedError(request, next);
+            return this.handleUnAuthorizedError(request, next);
           }
         }
         return throwError(() => new Error(err.error.message));
@@ -37,7 +37,7 @@ export class TokenInterceptor implements HttpInterceptor {
     );
   }
 
-  handleAUnAuthorizedError(req: HttpRequest<any>, next: HttpHandler) {
+  handleUnAuthorizedError(req: HttpRequest<any>, next: HttpHandler) {
     let tokenApiModel = new TokenApiModel();
     tokenApiModel.accessToken = this.auth.getToken()!;
     tokenApiModel.refreshToken = this.auth.getRefreshToken()!;

@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<div class="d-flex justify-content-center mt-5">
+  <div class="card p-3 py-4">
+    <div class="text-center text-glow">
+      <div>
+        <img src="https://pixelbox.ru/wp-content/uploads/2022/06/anime-avatar-telegram-pixelbox.ru-1.jpg" width="100" class="rounded-circle" alt="icon">
+      </div>
+      <div>
+        <h2 class="mt-2">{{user.username}}</h2>
+        <span class="mt-1 clearfix">{{user.email}}</span>
+        <small class="mt-1 clearfix">{{user.role}}</small>
+      </div>
+      <hr class="line">
+      <div class="row mt-3 mb-3">
+        <div class="">
+          <h5>Uploads</h5>
+          <span class="num">{{user.bookUploads.length}}</span>
+        </div>
+      </div>
+      <hr class="line">
+      <div *ngIf="user.role == 'Creator' || user.role == 'Translator'" class="mt-4">
+        <button routerLink="/add" class="profile-button px-5">Add</button>
+      </div>
+    </div>
+  </div>
+</div>

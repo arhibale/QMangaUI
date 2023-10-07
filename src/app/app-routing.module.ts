@@ -11,6 +11,8 @@ import {ResetComponent} from "./components/reset/reset.component";
 import {TagComponent} from "./components/tag/tag.component";
 import {BookComponent} from "./components/book/book.component";
 import {ReaderComponent} from "./components/reader/reader.component";
+import {BookAddComponent} from "./components/book-add/book-add.component";
+import {translatorGuard} from "./guards/translator.guard";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,7 +23,8 @@ const routes: Routes = [
   {path: 'reset', component: ResetComponent},
   {path: 'tag', component: TagComponent},
   {path: 'book', component: BookComponent},
-  {path: 'reader', component: ReaderComponent}
+  {path: 'reader', component: ReaderComponent},
+  {path: 'add', component: BookAddComponent, canActivate: [translatorGuard]}
 ];
 
 @NgModule({

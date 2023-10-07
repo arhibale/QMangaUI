@@ -9,4 +9,8 @@ export class UserApiService {
 
   constructor(private http: HttpClient) {
   }
+
+  profile(token: string) {
+    return this.http.get<any>(`${this.baseUrl}profile/${token}`);
+  }
 }

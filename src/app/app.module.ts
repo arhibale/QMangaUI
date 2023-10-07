@@ -18,6 +18,7 @@ import {TagComponent} from './components/tag/tag.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {BookComponent} from './components/book/book.component';
 import { ReaderComponent } from './components/reader/reader.component';
+import { BookAddComponent } from './components/book-add/book-add.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ReaderComponent } from './components/reader/reader.component';
     ResetComponent,
     TagComponent,
     BookComponent,
-    ReaderComponent
+    ReaderComponent,
+    BookAddComponent
   ],
   imports: [
     BrowserModule,
