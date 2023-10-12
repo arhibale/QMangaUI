@@ -1,49 +1,100 @@
-
-<div class="row">
-  <div class="col-8">
-    <label class="btn btn-default p-0">
-      <input type="file" accept="image/*" (change)="selectFile($event)" />
-    </label>
+<div class="outer">
+  <div class="container">
+    <div class="row">
+      <div class="d-flex justify-content-center">
+        <div class="panel border bg-white w-80">
+          <div class="panel-heading">
+            <h3 class="pt-3 font-weight-bold fw-bold">New Book</h3>
+          </div>
+          <div class="panel-body p-3">
+            <form [formGroup]="bookForm">
+              <div class="form-group pt-3">
+                <div class="pt-3">
+                  <div class="input-field" [class.input-field-error]="bookForm.controls['name'].dirty && bookForm.hasError('required', 'name')">
+                    <span class="fa fa-user p-2"></span>
+                    <input formControlName="name" class="" type="text" placeholder="Name">
+                  </div>
+                </div>
+              </div>
+              <small *ngIf="bookForm.controls['name'].dirty && bookForm.hasError('required', 'name')" class="text-danger">*Name is required</small>
+              <div class="form-group pt-3">
+                <div class="pt-3">
+                  <div class="input-field" [class.input-field-error]="bookForm.controls['description'].dirty && bookForm.hasError('required', 'description')">
+                    <span class="fa fa-user p-2"></span>
+                    <textarea formControlName="description" type="text" placeholder="Description"></textarea>
+                  </div>
+                </div>
+              </div>
+              <small *ngIf="bookForm.controls['description'].dirty && bookForm.hasError('required', 'description')" class="text-danger">*Description is required</small>
+              <div class="form-group pt-3">
+                <div class="pt-3">
+                  <ng-multiselect-dropdown formControlName="tags"
+                                           [placeholder]="'Tags'"
+                                           [settings]="dropdownSettings"
+                                           [data]="tags"
+                                           (onSelect)="onItemSelect($event)">
+                  </ng-multiselect-dropdown>
+                </div>
+              </div>
+              <div class="form-group pt-3 d-flex justify-content-around">
+                <div class="pt-3 me-2 w-40">
+                  <ng-multiselect-dropdown formControlName="authors"
+                                           [placeholder]="'Authors'"
+                                           [settings]="dropdownSettings"
+                                           [data]="authors"
+                                           (onSelect)="onItemSelect($event)">
+                  </ng-multiselect-dropdown>
+                </div>
+                <div class="pt-3 w-40">
+                  <ng-multiselect-dropdown formControlName="artists"
+                                           [placeholder]="'Artists'"
+                                           [settings]="dropdownSettings"
+                                           [data]="artists"
+                                           (onSelect)="onItemSelect($event)">
+                  </ng-multiselect-dropdown>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="pt-3">
+                  <h3>Cover</h3>
+                  <div class="file-input">
+                    <input type="file" class="" [multiple]="false" (change)="detectFile({event : $event})" accept="image/*">
+                  </div>
+                </div>
+                <div class="images-preview mt-2" *ngIf="coverImage.length">
+                  <div class="row">
+                    <div class="col-md-6 col-lg-3	 col-xl-2" formArrayName="coverImage" *ngFor="let image of coverImage.controls; let i = index;">
+                      <div class="card mb-3" [formGroupName]="i">
+                        <button type="button" (click)="removeCoverImage()" class="img-close-btn">x</button>
+                        <img [src]="image.value.url" class="card-img-top" alt="Image Preview">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="pt-3">
+                  <h3>Images</h3>
+                  <div class="file-input">
+                    <input type="file" class="" [multiple]="true" (change)="detectFiles({event : $event})" accept="image/*">
+                  </div>
+                </div>
+                <div class="images-preview mt-2" *ngIf="images.length">
+                  <div class="row">
+                    <div class="col-md-6 col-lg-3	 col-xl-2" formArrayName="images" *ngFor="let image of images.controls; let i = index;">
+                      <div class="card mb-3" [formGroupName]="i">
+                        <button type="button" (click)="removeImage({i : i})" class="img-close-btn">x</button>
+                        <img [src]="image.value.url" class="card-img-top img-prev" alt="Image Preview">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button (click)="onSubmit()" [disabled]="bookForm.invalid" type="submit" class="btn btn-dark btn-block mt-4 w-100">Add</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="col-4">
-    <button
-      class="btn btn-success btn-sm float-right"
-      [disabled]="!selectedFiles"
-      (click)="upload()"
-    >
-      Upload
-    </button>
-  </div>
-</div>
-
-<div>
-  <img [src]="preview" class="preview">
-</div>
-
-<div *ngIf="currentFile && progress" class="progress my-3">
-  <div
-    class="progress-bar progress-bar-info"
-    role="progressbar"
-    attr.aria-valuenow="{{ progress }}"
-    aria-valuemin="0"
-    aria-valuemax="100"
-    [ngStyle]="{ width: progress + '%' }"
-  >
-    {{ progress }}%
-  </div>
-</div>
-
-<div *ngIf="message" class="alert alert-secondary" role="alert">
-  {{ message }}
-</div>
-
-<div class="card mt-3">
-  <div class="card-header">List of Images</div>
-  <ul class="list-group list-group-flush">
-    <li *ngFor="let image of imageInfos | async" class="list-group-item">
-      <p><a href="{{ image.url }}">{{ image.name }}</a></p>
-      <img src="{{ image.url }}" alt="{{ image.name }}" height="80px" />
-    </li>
-  </ul>
 </div>

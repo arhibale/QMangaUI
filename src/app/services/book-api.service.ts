@@ -16,20 +16,19 @@ export class BookApiService {
     return this.http.get<any>(`${this.baseUrl}page=${page}&size=${pageSize}`);
   }
 
-  upload(file: File): Observable<HttpEvent<any>> {
-    const formData: FormData = new FormData();
-
-    formData.append('file', file);
-
-    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
-      reportProgress: true,
-      responseType: 'json',
-    });
-
-    return this.http.request(req);
+  upload(book: any) {
+    return this.http.post<any>(`${this.baseUrl}upload/token=${this.auth.getToken()}`, book);
   }
 
-  getFiles(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/files`);
+  getTags() {
+    return this.http.get<any>(`${this.baseUrl}tags`);
+  }
+
+  getAuthors() {
+    return this.http.get<any>(`${this.baseUrl}authors`);
+  }
+
+  getArtists() {
+    return this.http.get<any>(`${this.baseUrl}artists`);
   }
 }

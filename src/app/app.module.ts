@@ -19,6 +19,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {BookComponent} from './components/book/book.component';
 import { ReaderComponent } from './components/reader/reader.component';
 import { BookAddComponent } from './components/book-add/book-add.component';
+import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { BookAddComponent } from './components/book-add/book-add.component';
     HttpClientModule,
     NgToastModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

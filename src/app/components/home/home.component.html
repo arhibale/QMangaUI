@@ -9,8 +9,8 @@
       <div class="row">
         <div *ngFor="let item of books | paginate: { itemsPerPage: pageSize, currentPage: pageNumber, totalItems: count }"
              class="col-sm-12 col-md-2 col-lg-3 mb-4">
-          <a routerLink="book" class="card shadow-lg text-white card-text-bg card-has-bg click-col"
-             style="background-image: url('https://gtwallpaper.org/sites/default/files/wallpaper/195839/cyberpunk-girl-iphone-wallpapers-195839-1045329-2972719.png');">
+          <a routerLink="book" class="card shadow-lg text-white card-text-bg card-has-bg click-col bg-image"
+             [ngStyle]="{'background-image': 'url('+ this.url + item.name + '/' + item.coverImagePath +')'}">
             <div class="card-img-overlay card-text d-flex flex-column text-glow">
               <div class="card-body">
                 <small class="card-title mt-0 ">{{item.name}}</small><br>

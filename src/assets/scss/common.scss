@@ -38,6 +38,16 @@ a:hover {
   display: flex;
   align-items: center;
   cursor: pointer;
+  border: 1px solid #a8a8a8;
+  color: #4343ff;
+}
+
+.text-area-field {
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
   border: 2px solid #ddd;
   color: #4343ff;
 }
@@ -61,6 +71,10 @@ input[type='password'], {
   box-shadow: none;
 }
 
-.vh-40 {
+.w-40 {
   width: 40vh;
+}
+
+.w-80 {
+  width: 80vh;
 }

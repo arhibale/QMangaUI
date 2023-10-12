@@ -32,6 +32,7 @@ export class TokenInterceptor implements HttpInterceptor {
             return this.handleUnAuthorizedError(request, next);
           }
         }
+        console.log(err);
         return throwError(() => new Error(err.error.message));
       })
     );

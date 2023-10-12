@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   public pageNumber = 1;
   public pageSize!: number;
   public count!: number;
+  public url = "https://localhost:7087/Resources/Images/"
 
   constructor(private api: BookApiService, private toast: NgToastService) {
   }

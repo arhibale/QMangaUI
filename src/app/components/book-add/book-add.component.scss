@@ -1,3 +1,43 @@
-.preview {
-  max-width: 200px;
+textarea:focus {
+  outline: none;
+  border: none;
+}
+
+textarea {
+  border: none;
+  width: 100%;
+}
+
+.file-input {
+  border: 2px dotted;
+  border-radius: 10px;
+}
+
+.img-close-btn {
+  border: none;
+}
+
+.img-prev {
+  background: #3b187a;
+}
+
+input[type=file] {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+input[type=file]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #084cdf;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: #0d45a5;
 }

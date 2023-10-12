@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {UserApiService} from "../../services/user-api.service";
-import {TokenApiModel} from "../../models/token-api.model";
 import {AuthService} from "../../services/auth.service";
 
 @Component({
@@ -9,7 +8,7 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  public user!: any;
+  public user: any;
 
   constructor(private api: UserApiService, private auth: AuthService) {
   }
