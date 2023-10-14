@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {BookApiService} from "../../services/book-api.service";
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NgToastService} from "ng-angular-popup";
-import {from} from "rxjs";
 
 @Component({
   selector: 'app-book-add',
