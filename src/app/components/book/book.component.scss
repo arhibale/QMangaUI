@@ -1,0 +1,39 @@
+.card {
+  width: 80%;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 100px #1d0c3a;
+}
+
+.stats {
+  background: #f2f5f8 !important;
+  box-shadow: 0 0 10px #d7d7d7 !important;
+  color: #000 !important;
+}
+
+.small-text {
+  font-size: 1em;
+  color: #9b9c9f;
+}
+
+.tag-box {
+  display: flex;
+  font-size: 14px;
+  justify-content: flex-start;
+
+  .tag-item {
+    display: inline-block;
+    background: rgb(67, 66, 77);
+    border-radius: 3px;
+    padding: 2.5px 10px;
+    margin: 0 5px 5px 0;
+    cursor: default;
+    user-select: none;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background: rgb(59, 24, 122);
+    }
+  }
+}

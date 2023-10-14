@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserApiService} from "../../services/user-api.service";
 import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +11,7 @@ import {AuthService} from "../../services/auth.service";
 export class ProfileComponent implements OnInit {
   public user: any;
 
-  constructor(private api: UserApiService, private auth: AuthService) {
+  constructor(private api: UserApiService, private auth: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -18,5 +19,11 @@ export class ProfileComponent implements OnInit {
       .subscribe(res => {
         this.user = res;
       })
+  }
+
+  followBook(name: string) {
+    const buttonRef = document.getElementById("closeModalBtn");
+    buttonRef?.click();
+    this.router.navigate(['book', name]);
   }
 }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BookApiService} from "../../services/book-api.service";
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NgToastService} from "ng-angular-popup";
+import {from} from "rxjs";
 
 @Component({
   selector: 'app-book-add',
@@ -140,9 +141,18 @@ export class BookAddComponent implements OnInit {
       let form = new FormData();
       form.append('name', value.name);
       form.append('description', value.description);
-      form.append('tags', value.tags);
-      form.append('authors', value.authors);
-      form.append('artists', value.artists);
+
+      for (let tag of value.authors) {
+        form.append('authors', tag);
+      }
+
+      for (let tag of value.artists) {
+        form.append('artists', tag);
+      }
+
+      for (let tag of value.tags) {
+        form.append('tags', tag);
+      }
 
       for (let file of this.coverImage.controls) {
         form.append('coverImage', file.value.file);
@@ -155,7 +165,7 @@ export class BookAddComponent implements OnInit {
       this.api.upload(form)
         .subscribe({
           next: (res) => {
-            this.toast.success({detail: "SUCCESS", summary: res, duration: 5000});
+            this.toast.success({detail: "SUCCESS", summary: res.message, duration: 5000});
             this.bookForm.reset();
             this.images.clear();
             this.coverImage.clear();

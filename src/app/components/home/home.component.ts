@@ -36,6 +36,8 @@ export class HomeComponent implements OnInit {
           console.log(err);
         }
       })
+
+    console.log(this.books);
   }
 
   setCurrent(p: PaginationControlsDirective, page: any) {
@@ -56,5 +58,11 @@ export class HomeComponent implements OnInit {
   previous(p: PaginationControlsDirective) {
     p.previous();
     this.pageUp();
+  }
+
+  getUrl(item: any) {
+    let name: string = item.name;
+    name = name.replace(/\s/g, "_");
+    return this.url + name + '/' + item.coverImagePath
   }
 }

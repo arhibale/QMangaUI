@@ -1,24 +1,60 @@
 <div class="d-flex justify-content-center mt-5">
   <div class="card p-3 py-4">
-    <div *ngIf="user" class="text-center text-glow">
+    <div *ngIf="user" class="text-center">
       <div>
-        <img src="https://pixelbox.ru/wp-content/uploads/2022/06/anime-avatar-telegram-pixelbox.ru-1.jpg" width="100" class="rounded-circle" alt="icon">
+        <img src="https://pixelbox.ru/wp-content/uploads/2022/06/anime-avatar-telegram-pixelbox.ru-1.jpg" width="100"
+             class="rounded-circle glow" alt="icon">
       </div>
       <div>
-        <h2 class="mt-2">{{user.username}}</h2>
-        <span class="mt-1 clearfix">{{user.email}}</span>
-        <small class="mt-1 clearfix">{{user.role}}</small>
+        <h2 class="mt-2 text-glow">{{user.username}}</h2>
+        <span class="mt-1 clearfix text-glow">{{user.email}}</span>
+        <small class="mt-1 clearfix text-glow">{{user.role}}</small>
       </div>
       <hr class="line">
       <div class="row mt-3 mb-3">
         <div class="">
-          <h5>Uploads</h5>
-          <span class="num">{{user.bookUploads.length}}</span>
+          <h5 class="text-glow">Uploads: {{user.bookUploads.length}}</h5>
+          <button type="button" class="profile-button px-5" data-bs-toggle="modal" data-bs-target="#bookTable">
+            Watch
+          </button>
         </div>
       </div>
       <hr class="line">
       <div *ngIf="user.role == 'Creator' || user.role == 'Translator'" class="mt-4">
         <button routerLink="/add" class="profile-button px-5">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="bookTable" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header float-right">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" id="closeModalBtn" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Type</th>
+              <th scope="col">Link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let book of user.bookUploads; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{book.name}}</td>
+              <td>{{book.bookType}}</td>
+              <td (click)="followBook(book.name)" class="text-glow" style="cursor: pointer">Watch</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

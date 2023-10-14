@@ -1,0 +1,41 @@
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card p-3">
+    <div class="d-flex">
+      <div class="me-3 w-25">
+        <img [src]="imageCover"
+          class="shadow-lg" width="200">
+        <div class="button mt-2 d-flex flex-row align-items-center">
+          <button class="btn btn-sm btn-outline-primary w-100">Read</button>
+        </div>
+      </div>
+      <div class="ml-3 w-100">
+        <h1 class="mb-0 mt-0">{{name}}</h1>
+        <span>{{book.bookType}}</span>
+        <div class="p-2 mt-2 bg-primary rounded text-white stats shadow">
+          <div class="d-flex flex-column">
+            <span class="small-text">Authors</span>
+            <div class="tag-box text-white">
+              <span *ngFor="let author of book.authors" class="tag-item"><i class="fa fa-user mr-2"></i> {{author}}</span>
+            </div>
+          </div>
+          <div class="d-flex flex-column mt-4">
+            <span class="small-text">Artists</span>
+            <div class="tag-box text-white">
+              <span *ngFor="let artist of book.artists" class="tag-item"><i class="fa fa-pencil mr-2"></i> {{artist}}</span>
+            </div>
+          </div>
+          <div class="d-flex flex-column mt-4">
+            <span class="small-text">Description</span>
+            <span class="">{{book.description}}</span>
+          </div>
+          <div class="d-flex flex-column mt-4">
+            <span class="small-text">Tags</span>
+            <div class="tag-box text-white">
+              <span *ngFor="let tag of book.tags" class="tag-item"><i class="fa fa-tag mr-2"></i>{{tag}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

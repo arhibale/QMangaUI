@@ -16,6 +16,10 @@ export class BookApiService {
     return this.http.get<any>(`${this.baseUrl}page=${page}&size=${pageSize}`);
   }
 
+  getBook(name: string) {
+    return this.http.get<any>(`${this.baseUrl}name=${name}`)
+  }
+
   upload(book: any) {
     return this.http.post<any>(`${this.baseUrl}upload/token=${this.auth.getToken()}`, book);
   }

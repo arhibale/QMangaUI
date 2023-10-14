@@ -28,7 +28,7 @@
               </div>
               <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')" class="text-danger">*Password is required</small>
               <div class="form-inline fr mt-4">
-                <a class="font-weight-bold forget" data-bs-toggle="modal" data-bs-target="#exampleModal">Forget your password?</a>
+                <a class="font-weight-bold forget" data-bs-toggle="modal" data-bs-target="#resetPassword">Forget your password?</a>
               </div>
               <button (click)="onLogin()" [disabled]="loginForm.invalid" type="submit" class="btn btn-dark btn-block mt-4 w-100">Login</button>
               <div class="text-center pt-4 text-muted">Don't have account? <a class="forget" routerLink="/registration">Registration</a></div>
@@ -40,7 +40,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="resetPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
