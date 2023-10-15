@@ -34,4 +34,8 @@ export class BookApiService {
   getArtists() {
     return this.http.get<any>(`${this.baseUrl}artists`);
   }
+
+  getImages(name: string) {
+    return this.http.get<any>(`${this.baseUrl}reader/name=${name}`);
+  }
 }

@@ -30,7 +30,7 @@
               <div class="form-inline fr mt-4">
                 <a class="font-weight-bold forget" data-bs-toggle="modal" data-bs-target="#resetPassword">Forget your password?</a>
               </div>
-              <button (click)="onLogin()" [disabled]="loginForm.invalid" type="submit" class="btn btn-dark btn-block mt-4 w-100">Login</button>
+              <button (click)="onLogin()" [disabled]="loginForm.invalid" type="submit" class="button-play mt-4 w-100">Login</button>
               <div class="text-center pt-4 text-muted">Don't have account? <a class="forget" routerLink="/registration">Registration</a></div>
             </form>
           </div>
@@ -61,8 +61,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button id="closeModalBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button (click)="confirmToSend()" type="button" class="btn btn-primary">Send</button>
+        <button id="closeModalBtn" type="button" class="button-play" data-bs-dismiss="modal">Close</button>
+        <button (click)="confirmToSend()" type="button" class="button-play">Send</button>
       </div>
     </div>
   </div>

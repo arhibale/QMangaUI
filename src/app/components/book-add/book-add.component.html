@@ -88,11 +88,15 @@
                   </div>
                 </div>
               </div>
-              <button (click)="onSubmit()" [disabled]="bookForm.invalid" type="submit" class="btn btn-dark btn-block mt-4 w-100">Add</button>
+              <button (click)="onSubmit()" [disabled]="bookForm.invalid" type="submit" class="button-play mt-4 w-100">Add</button>
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="isLoading" class="text-center text-white">
+  Loading...
 </div>

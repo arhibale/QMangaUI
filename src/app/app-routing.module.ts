@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent, canActivate: [authGuard]},
   {path: 'reset', component: ResetComponent},
   {path: 'book/:name', component: BookComponent},
-  {path: 'reader', component: ReaderComponent},
+  {path: 'reader/:name', component: ReaderComponent},
   {path: 'add', component: BookAddComponent, canActivate: [translatorGuard]}
 ];
 

@@ -29,6 +29,5 @@ export class BookComponent implements OnInit {
           this.imageCover = this.url + this.book.name.replace(/\s/g, "_") + '/' + this.book.coverImagePath;
         }
       })
-
   }
 }

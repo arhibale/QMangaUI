@@ -16,6 +16,7 @@ export class BookAddComponent implements OnInit {
   artists: Array<any> = [];
 
   dropdownSettings = {};
+  isLoading: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private api: BookApiService, private toast: NgToastService) {
   }
@@ -161,6 +162,8 @@ export class BookAddComponent implements OnInit {
         form.append('images', file.value.file);
       }
 
+      this.isLoading = true;
+
       this.api.upload(form)
         .subscribe({
           next: (res) => {
@@ -168,6 +171,7 @@ export class BookAddComponent implements OnInit {
             this.bookForm.reset();
             this.images.clear();
             this.coverImage.clear();
+            this.isLoading = false;
           },
           error: (err) => {
             this.toast.error({detail: "ERROR", summary: err, sticky: true, duration: 5000});

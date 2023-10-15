@@ -14,14 +14,14 @@
       <div class="row mt-3 mb-3">
         <div class="">
           <h5 class="text-glow">Uploads: {{user.bookUploads.length}}</h5>
-          <button type="button" class="profile-button px-5" data-bs-toggle="modal" data-bs-target="#bookTable">
+          <button type="button" class="button-play" data-bs-toggle="modal" data-bs-target="#bookTable">
             Watch
           </button>
         </div>
       </div>
       <hr class="line">
       <div *ngIf="user.role == 'Creator' || user.role == 'Translator'" class="mt-4">
-        <button routerLink="/add" class="profile-button px-5">Add</button>
+        <button routerLink="/add" class="button-play">Add</button>
       </div>
     </div>
   </div>
